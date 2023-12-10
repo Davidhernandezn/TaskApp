@@ -1,6 +1,23 @@
 import { css } from "lit";
 
 export const generalStyles = css`
+
+/* Definición de variables CSS */
+:root {
+  --color-primary: #0D6EFD;
+  --color-secondary: #2ecc71;
+  --font-family: 'Arial', sans-serif;
+  --font-size-medium: 16px;
+}
+
+
+*{
+  margin:0px;
+  padding: 0px;
+}
+
+
+
  .main-container {
       margin: 50px auto;
       width: 500px;
@@ -10,10 +27,12 @@ export const generalStyles = css`
       max-height: 600px;
       overflow: scroll;
     }
+
     .title {
       text-align: center;
       color: #68B9C7;
     }
+
     .input-text{
         width: 90%;
         height: 50px;
@@ -64,7 +83,11 @@ export const generalStyles = css`
       }
 
 
-      .black{
-        background-color: black;
-      }
+.header{
+  background-color: #0D6EFD;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+}
 `

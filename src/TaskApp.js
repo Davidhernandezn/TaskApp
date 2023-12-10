@@ -63,7 +63,7 @@ console.log(this.timers);
         ${listaTareasArr}
       </div>
         <div class="btn-container">
-      <button class="btn-delete" @click=${this.removeCheckBox}>Archive done</button></div>
+      <button class="btn-delete" @click=${this.removeCheckBox}>Borrar tareas</button></div>
 
         </div>
       

@@ -28,8 +28,8 @@ export class Header extends LitElement{
 
 render(){
     return html`
-    <div>
-    <h2>¡Hola! David</h2> <span>${this.fechaActual}</span>
+    <div class="header">
+    <h2>¡Hola! Bienvenido  TaskApp</h2> <span>${this.fechaActual}</span>
     </div>
     `;
 }
