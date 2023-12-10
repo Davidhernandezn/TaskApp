@@ -9,6 +9,7 @@ export class DescriptionTaskComponent extends LitElement{
   static get properties(){
     return {
         value: { type: String}
+        
     };
 }
 
@@ -21,7 +22,7 @@ render(){
     `;
 }
 inputKeyDown(e){
-    this.value = e.target.value;
+  this.value = e.target.value;
     this.dispatchEvent(new CustomEvent('keydown',{
         detail: this.target
     }));

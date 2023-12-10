@@ -63,4 +63,8 @@ export const generalStyles = css`
         vertical-align: middle;
       }
 
+
+      .black{
+        background-color: black;
+      }
 `

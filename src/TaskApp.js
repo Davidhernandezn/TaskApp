@@ -25,7 +25,12 @@ export class TaskApp extends LitElement {
     var listaTareasArr = [];
     this.listaTareas.forEach((tareas, index)=>{
       listaTareasArr.push(html`
-      <input type="checkbox" class="item" id='cb_${this.descripcionTarea}' @change=${(event) => this.setTimer(event,index)}><label class="label" id="label">${tareas}</label><br>`);
+      <input type="checkbox" class="item" id='cb_${this.descripcionTarea}' @change=${(event) => this.setTimer(event,index)}>
+      <label class="label" id="label">${tareas}</label>
+      <button>Editar</button>
+      <button @click=${() => this.removeTask(index)}>Delete</button>
+      <br>`);
+
         try {
           if(index === this.listaTareas.length -1){
             this.timers[index] = {
@@ -65,13 +70,21 @@ console.log(this.timers);
     `;
   }
 
-  inputKeyDown(e){
-    if(e.key === 'Enter'){
-      this.descripcionTarea = e.target.value;
+
+  inputKeyDown(e) {
+    if (e.key === 'Enter') {
+      this.descripcionTarea = e.target.value.trim(); //  trim() para eliminar espacios en blanco al inicio y al final
+  
+      if (this.descripcionTarea === '') {
+        alert('Debes agregar una tarea.');
+        return; // Detiene la ejecución si no se ingresó ninguna tarea
+      }
+  
       this.listaTareas.push(this.descripcionTarea);
       this.resetTexto(e);
     }
   }
+  
 
   resetTexto(e){
     this.descripcionTarea = '';
@@ -103,13 +116,12 @@ console.log(this.timers);
     
 }
   removeCheckBox(){
-    /*
-    let checkBox = this.shadowRoot.getElementById('taskContainer');
-    while(checkBox.firstChild){
-      checkBox.removeChild(checkBox.firstChild);
-    }
-    */
     this.listaTareas = [];
+  }
+
+  removeTask(index) {
+    this.listaTareas.splice(index, 1); // Elimina el elemento en la posición 'index' de 'listaTareas'
+    this.requestUpdate(); // Actualiza la vista para reflejar el cambio
   }
 
 }
