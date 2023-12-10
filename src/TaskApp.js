@@ -27,7 +27,7 @@ export class TaskApp extends LitElement {
       listaTareasArr.push(html`
       <input type="checkbox" class="item" id='cb_${this.descripcionTarea}' @change=${(event) => this.setTimer(event,index)}>
       <label class="label" id="label">${tareas}</label>
-      <button>Editar</button>
+      <button @click=${() => this.editTask(index)}>Editar</button>
       <button @click=${() => this.removeTask(index)}>Delete</button>
       <br>`);
 
@@ -124,4 +124,33 @@ console.log(this.timers);
     this.requestUpdate(); // Actualiza la vista para reflejar el cambio
   }
 
+
+  editTask(index) {
+    const descriptionTask = this.shadowRoot.querySelector('.input-text');
+    descriptionTask.value = this.listaTareas[index]; // Asigna el valor del ítem seleccionado al campo de entrada
+
+    const confirmEdit = (e) => {
+      if (e.key === 'Enter') {
+        this.listaTareas[index] = descriptionTask.value; // Actualiza el valor del ítem en la lista
+        this.listaTareas = this.listaTareas.filter((tarea) => tarea.trim() !== '');
+        this.requestUpdate(); // Actualiza la vista para reflejar el cambio
+        descriptionTask.removeEventListener('keydown', confirmEdit); // Quita el event listener cuando se confirma la edición
+      }
+    };
+    descriptionTask.addEventListener('keydown', confirmEdit); // Escucha el evento de teclado para confirmar la edición al presionar Enter
+  }
+
+  /**
+  editTask(index) {
+    const descriptionTask = this.shadowRoot.querySelector('.input-text');
+    descriptionTask.value = this.listaTareas[index]; // Asigna el valor del ítem seleccionado al campo de entrada
+  
+    const confirmEdit = () => {
+      this.listaTareas[index] = descriptionTask.value; // Actualiza el valor del ítem en la lista
+      this.listaTareas = this.listaTareas.filter((tarea) => tarea.trim() !== '');
+      this.requestUpdate(); // Actualiza la vista para reflejar el cambio
+      descriptionTask.removeEventListener('blur', confirmEdit); // Quita el event listener cuando se confirma la edición
+    };
+  descriptionTask.addEventListener('blur', confirmEdit); // Escucha el evento de pérdida de foco para confirmar la edición
+  }**/
 }
