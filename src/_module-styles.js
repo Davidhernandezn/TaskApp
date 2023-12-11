@@ -1,49 +1,48 @@
 import { css } from "lit";
-
 export const generalStyles = css`
-
-/* Definición de variables CSS */
-:root {
-  --color-primary: #0D6EFD;
-  --color-secondary: #2ecc71;
-  --font-family: 'Arial', sans-serif;
-  --font-size-medium: 16px;
-}
-
 
 *{
   margin:0px;
   padding: 0px;
 }
 
-
-
  .main-container {
       margin: 50px auto;
       width: 500px;
       border-radius: 10px;
-      background-color: #EAFCFF;
+      background-color: #0D6EFD;
       justify-content: center;
       max-height: 600px;
-      overflow: scroll;
+      padding: 20px;
+      /*overflow: scroll;*/
     }
 
     .title {
       text-align: center;
-      color: #68B9C7;
+      color: white;
     }
 
     .input-text{
-        width: 90%;
-        height: 50px;
+        margin-top:10px;
+        width: 98%;
+        height: 40px;
         font-size: 20px;
+        border-radius:6px;
     }
-    .task-container {
+
+ .tareas{
+  background-color: white;
+  margin-top:10px;
+  border-radius:10px;
+ }   
+    
+    
+    #task-container {
       justify-content: start;
       display: flex;
       align-items: center;
-
     }
+
     .item{
     margin-left: 20px;
     cursor: pointer;
@@ -53,23 +52,26 @@ export const generalStyles = css`
     }
       
       .btn-delete{
-        width: 200px;
-        height: 35px;
-        font-family: 'Courier New', Courier, monospace;
-        background-color: #E6F7FF;
-        border-radius: 10px;
+      border: none; 
+        width: 100px;
+        height: 30px;
+        background-color: red;
+        color: white;
+        border-radius: 6px;
         cursor: pointer;
-
       }
+
       .btn-delete:hover{
         background-color: #68B9C7;
       }
+
       .btn-delete:active{
         box-shadow: 0 2px #666;
         transform: translateY(4px);
       }
+
       .btn-container{
-        padding:20px;
+        padding:8px;
         text-align: right;
       }
 
@@ -78,6 +80,7 @@ export const generalStyles = css`
         font-size: 20px;
         width: 100%;
       }
+
       .item, .label{
         vertical-align: middle;
       }
@@ -89,5 +92,25 @@ export const generalStyles = css`
   text-align: center;
   padding: 10px;
   width: 100%;
+}
+
+
+.btn-edit{
+  background-color: #0D6EFD;
+  color: white;
+  padding: 2px;
+  border: none;
+  font-size:14px;
+  border-radius: 2px;
+  margin-top:4px;
+}
+.btn-detele{
+  background-color: red;
+  color: white;
+  padding: 2px;
+  border: none;
+  font-size:14px;
+  border-radius: 2px;
+  margin-top:4px;
 }
 `
