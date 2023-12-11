@@ -14,22 +14,19 @@ export class Header extends LitElement{
 
   constructor(){
     super();
-    this.descripcionTarea = ' ';
-    this.listaTareas= [];
-    this.timers = [];
     this.fechaActual = '';
   }
 
   connectedCallback() {
     super.connectedCallback();
-    //la función getFechas() se llamará automáticamente tan pronto como el componente esté conectado al DOM. 
-    this.getFechas(); // Llama a la función al cargar el componente
+    //la función getFechas se llamará automáticamente tan pronto como el componente esté conectado al DOM. 
+    this.getFechas();
   }
 
 render(){
     return html`
     <div class="header">
-    <h2>¡Hola! Bienvenido  TaskApp</h2> <span>${this.fechaActual}</span>
+    <h2>¡Hola! Bienvenido TaskApp</h2> <span>${this.fechaActual}</span>
     </div>
     `;
 }
@@ -38,6 +35,7 @@ getFechas(){
 let meses = new Array ("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
 let diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
 let f = new Date();
+console.log('fecha->', f);
 this.fechaActual = (diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
 }
 }

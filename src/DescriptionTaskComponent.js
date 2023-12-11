@@ -8,16 +8,14 @@ export class DescriptionTaskComponent extends LitElement{
   
   static get properties(){
     return {
-        value: { type: String}
-        
+        value: { type: String}        
     };
 }
 
 render(){
     return html`
     <div>
-    <input class="input-text" type="text" .value="${this.value}"
-                    @input="${this.inputKeyDown}">
+    <input class="input-text" type="text" .value="${this.value}" @input="${this.inputKeyDown}">
     </div>
     `;
 }
@@ -27,5 +25,4 @@ inputKeyDown(e){
         detail: this.target
     }));
 }
-
 }

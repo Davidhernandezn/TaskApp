@@ -53,15 +53,13 @@ export class TaskApp extends LitElement {
           }
         } catch (error) {
           alert('Opps ha ocurrido un error!!!')
-        }
-      
+        }      
     });
 console.log(this.timers);
 
     return html`
     <div class="main-container">
       <h1 class="title">Mis Tareas</h1>
-      
       <description-task class="input-text" id="inputText" value=${this.descripcionTarea} @keydown="${this.inputKeyDown}"></description-task>
       <div class="tareas">
   <div id="taskContainer">
@@ -69,18 +67,15 @@ console.log(this.timers);
       </div>
       </div>
     
-        <div class="btn-container">
+      <div class="btn-container">
       <button class="btn-delete" @click=${this.removeCheckBox}>Borrar tareas</button></div>
-
-        </div>
-      
+      </div>
     `;
   }
 
-
   inputKeyDown(e) {
     if (e.key === 'Enter') {
-      this.descripcionTarea = e.target.value.trim(); //  trim() para eliminar espacios en blanco al inicio y al final
+      this.descripcionTarea = e.target.value.trim();
   
       if (this.descripcionTarea === '') {
         alert('Debes agregar una tarea.');
@@ -91,14 +86,13 @@ console.log(this.timers);
       this.resetTexto(e);
     }
   }
-  
 
   resetTexto(e){
     this.descripcionTarea = '';
     e.target.value = '';
   }
-  setTimer(event, index) {
-    
+
+  setTimer(event, index) {  
     const labels = this.shadowRoot.querySelectorAll('.item + label');
     const checkbox = event.target;
 
@@ -110,18 +104,18 @@ console.log(this.timers);
         labels[index].style.background = 'none';
         clearTimeout(this.timers[index].timeout1);
         clearTimeout(this.timers[index].timeout2);
-        clearTimeout(this.timers[index].timeout3);
-      
+        clearTimeout(this.timers[index].timeout3);  
     }
   }
+
   colors(index, color) {
     try {
       const label = this.shadowRoot.querySelectorAll('.item + label');
     label[index].style.background = color;
     } catch (error) {
-    }
-    
+    }  
 }
+
   removeCheckBox(){
     this.listaTareas = [];
   }
@@ -131,7 +125,6 @@ console.log(this.timers);
     this.requestUpdate(); // Actualiza la vista para reflejar el cambio
   }
 
-
   editTask(index) {
     const descriptionTask = this.shadowRoot.querySelector('.input-text');
     descriptionTask.value = this.listaTareas[index]; // Asigna el valor del ítem seleccionado al campo de entrada
@@ -140,24 +133,10 @@ console.log(this.timers);
       if (e.key === 'Enter') {
         this.listaTareas[index] = descriptionTask.value; // Actualiza el valor del ítem en la lista
         this.listaTareas = this.listaTareas.filter((tarea) => tarea.trim() !== '');
-        this.requestUpdate(); // Actualiza la vista para reflejar el cambio
+        this.requestUpdate();
         descriptionTask.removeEventListener('keydown', confirmEdit); // Quita el event listener cuando se confirma la edición
       }
     };
     descriptionTask.addEventListener('keydown', confirmEdit); // Escucha el evento de teclado para confirmar la edición al presionar Enter
   }
-
-  /**
-  editTask(index) {
-    const descriptionTask = this.shadowRoot.querySelector('.input-text');
-    descriptionTask.value = this.listaTareas[index]; // Asigna el valor del ítem seleccionado al campo de entrada
-  
-    const confirmEdit = () => {
-      this.listaTareas[index] = descriptionTask.value; // Actualiza el valor del ítem en la lista
-      this.listaTareas = this.listaTareas.filter((tarea) => tarea.trim() !== '');
-      this.requestUpdate(); // Actualiza la vista para reflejar el cambio
-      descriptionTask.removeEventListener('blur', confirmEdit); // Quita el event listener cuando se confirma la edición
-    };
-  descriptionTask.addEventListener('blur', confirmEdit); // Escucha el evento de pérdida de foco para confirmar la edición
-  }**/
 }

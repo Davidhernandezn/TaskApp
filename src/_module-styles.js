@@ -14,7 +14,6 @@ export const generalStyles = css`
       justify-content: center;
       max-height: 600px;
       padding: 20px;
-      /*overflow: scroll;*/
     }
 
     .title {
@@ -35,8 +34,7 @@ export const generalStyles = css`
   margin-top:10px;
   border-radius:10px;
  }   
-    
-    
+        
     #task-container {
       justify-content: start;
       display: flex;
@@ -55,7 +53,7 @@ export const generalStyles = css`
       border: none; 
         width: 100px;
         height: 30px;
-        background-color: red;
+        background-color: #DC3545;
         color: white;
         border-radius: 6px;
         cursor: pointer;
@@ -63,11 +61,6 @@ export const generalStyles = css`
 
       .btn-delete:hover{
         background-color: #68B9C7;
-      }
-
-      .btn-delete:active{
-        box-shadow: 0 2px #666;
-        transform: translateY(4px);
       }
 
       .btn-container{
@@ -85,7 +78,6 @@ export const generalStyles = css`
         vertical-align: middle;
       }
 
-
 .header{
   background-color: #0D6EFD;
   color: white;
@@ -93,7 +85,6 @@ export const generalStyles = css`
   padding: 10px;
   width: 100%;
 }
-
 
 .btn-edit{
   background-color: #0D6EFD;
@@ -104,8 +95,9 @@ export const generalStyles = css`
   border-radius: 2px;
   margin-top:4px;
 }
+
 .btn-detele{
-  background-color: red;
+  background-color: #DC3545;
   color: white;
   padding: 2px;
   border: none;
