@@ -1,4 +1,7 @@
-# \<task-app>
+# TaskApp
+## Captura de pantalla
+![Captura de pantalla del temporizador](captura_inicio.png)
+![Captura de pantalla del temporizador](captura_proyecto.png)
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
